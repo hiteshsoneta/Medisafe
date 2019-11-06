@@ -14,6 +14,7 @@ import android.view.TextureView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 public class medicineDetails extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
@@ -49,6 +50,24 @@ public class medicineDetails extends AppCompatActivity implements TimePickerDial
         intent.putExtra(AlarmClock.EXTRA_MINUTES,i1);
         intent.putExtra(AlarmClock.EXTRA_MESSAGE,"drug:" + ed1.getText() + " no of pills" + ed2.getText());
         startActivity(intent);
+
+    }
+
+
+    public void Insertmed(View insertBtn)
+    {
+        EditText drugnametxt = (EditText) findViewById(R.id.editText2);
+        EditText pillno= (EditText) findViewById(R.id.editText3);
+
+        Medicine med=new Medicine(drugnametxt.getText().toString(), pillno.getText().toString());
+
+        Meddb meddb= new Meddb(this);
+        meddb.addmed(med);
+
+        Toast.makeText(this,"Record inserted successfully",Toast.LENGTH_SHORT).show();
+
+
+
 
     }
 
